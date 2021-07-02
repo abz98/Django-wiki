@@ -1,0 +1,102 @@
+"""
+###deleted add code
+def add(request):
+  if request.method == 'POST'or 'GET':
+    filetitle = request.POST.get('bob')
+    contentitle =  request.POST.get('pop')
+    return render(request, "add/add.html",{
+         "entries":util.save_entry(filetitle,contentitle)
+           })
+  return render(request, "add/add.html",{
+       "entries":util.save_entry(filetitle,contentitle)
+         })
+"""
+
+
+
+{% block body %}
+    <h1>Create New Page</h1>
+    <form  action="{% url 'encyclopedia:add' %}" method="post">
+       {%csrf_token%}
+       <input name="bob" type="text" placeholder="Title" id="bob">
+       <textarea name="pop" rows="20" cols="25" value="content" placeholder="Enter the Markdown content" id="pop"></textarea>
+       <input type="submit" value="submit" />
+    </form>
+{% endblock %}
+
+
+# return render(request, "ent/gandu.html", {
+#        "entries": ute a form, we can opt to leave it empty or pre-populate it, til.get_entry(sa)
+#    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***edit page####
+def edit_page(request):
+  if request.method=="POST" or "GET":
+
+     form =Editls(request.POST)
+     if form.is_valid() :
+
+         formtitle=form.cleaned_data["formtitle"]
+         Editform=form.cleaned_data["Editform"]
+    #content = util.get_entry(editPage)
+     else:
+
+       return render(request, "ent/edit.html",{
+
+       "form":form
+       })
+
+""
+
+
+
+
+
+
+
+
+
+
+
+       ### edit page
+
+       def modify(request,selectedit):
+           if request.method == 'POST'or 'GET':
+               editead = request.POST.get('editead')
+               editbody =  request.POST.get('editbody')
+           else:
+               return render(request, "ent/edit.html",{
+                "content": content
+                  })
+           editead=""
+           editbody=""
+           content = util.get_entry(selectedit)
+           return render(request, "ent/edit.html",{
+            "entries":util.save_entry_edited(editead,editbody),
+            "content": content,
+            "entries":util.save_entry_edited(editead,editbody),
+            "page_title":selectedit
+              })

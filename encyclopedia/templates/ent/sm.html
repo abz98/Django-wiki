@@ -1,0 +1,8 @@
+{% extends "encyclopedia/layout.html" %}
+
+
+
+{% block body %}
+{% load markdownify%}
+{{ entries|markdownify}}
+{% endblock %}
